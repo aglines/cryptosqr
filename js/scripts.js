@@ -20,29 +20,37 @@ var Encryptor = function(inputString){
     };
   };
 console.table(encodedBox);
-// console.log(encodedBox[2][1]); // this works
+
 // DECRYPTOR
 i = j = k = 0;
-var outputString = [];
-
+var encodedString = [];
 for ( i = 0 ; i < columns ; i +=1 ) {
   for ( j = 0 ; j < rows ; j +=1 ) {
-
     if ( typeof(encodedBox[j][i]) != "undefined" ) {
-          outputString[k] = encodedBox[j][i];
+          encodedString[k] = encodedBox[j][i];
           k += 1;
     };
   };
 };
 
 // FINALIZE OUTPUT STRING WITH SPACES
+// console.log(encodedString);
+// loop thru encodedString,
+// at position 0, remove 5 items
+outputArray = [];
+while ( encodedString.length > 0 ) {
+  var currentSplice = encodedString.splice(0, 5);
+  var currentNewWord = currentSplice.join("") + " ";
+  // console.log("current splice ", currentSplice);
+  console.log("current new word ", currentNewWord);
+  console.log("encodedString is now ", encodedString);
+  var outputArray = outputArray + currentNewWord;
+}
+console.log(outputArray);
 
-
-console.log(outputString);
-
+return outputArray;
 
 }; // END FRONTEND
-
 
 //FRONTEND
 
